@@ -205,6 +205,26 @@ function plan_amortizacion(){
 	}
 }
 
+
+
+// Traer info de otra pagina
+
+/* const simular = document.getElementById('simular')
+simular.onclick = () =>{
+	const alertaintro = document.getElementById('alerta')
+	const nombre = document.getElementById('nom_ape')
+	if (nombre==='a'){
+		alertaintro.innerText="¡Todos los datos con '*' son obligatorios para poder continuar!"}
+	else{
+		alertaintro.innerText="todo bien"
+	}
+
+} */
+
+
+
+
+
 const calcular = document.getElementById('calculo')
 calcular.onclick = () => {
 	edad=parseInt(prompt("cual es tu edad?"))
