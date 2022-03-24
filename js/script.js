@@ -206,38 +206,19 @@ function plan_amortizacion(){
 }
 
 
-
-// Traer info de otra pagina
-
-/* const simular = document.getElementById('simular')
-simular.onclick = () =>{
-	const alertaintro = document.getElementById('alerta')
-	const nombre = document.getElementById('nom_ape')
-	if (nombre==='a'){
-		alertaintro.innerText="¡Todos los datos con '*' son obligatorios para poder continuar!"}
-	else{
-		alertaintro.innerText="todo bien"
-	}
-
-} */
-
-
-
-
-
 const calcular = document.getElementById('calculo')
 calcular.onclick = () => {
-	edad=parseInt(prompt("cual es tu edad?"))
+/* 	edad=parseInt(prompt("cual es tu edad?"))
 	while (isNaN(edad) || edad<=0){
 		alert("La edad ingresada debe ser mayor que cero")
 		edad=parseInt(prompt("cual es tu edad?"))
-	}
-	sessionStorage.setItem('edad',edad)
-	if (edad>=18){
+	} */
+/* 	sessionStorage.setItem('edad',edad) */
+/* 	if (edad>=18){ */
 		anualidad()
 		plan_amortizacion()
 		sessionStorage.setItem('programa', JSON.stringify(Plan_pagos))
-		const programaJson=sessionStorage.getItem('programa')
+/* 		const programaJson=sessionStorage.getItem('programa')
 		console.log(programaJson)
 		let pc_fecha=document.getElementById('storage_fecha')
 		pc_fecha.innerText = 'FECHA: '+ sessionStorage.getItem('fecha')
@@ -255,13 +236,13 @@ calcular.onclick = () => {
 		pc_amparo.innerText = ''
 
 		let pc_historial=document.getElementById('historial')
-		pc_historial.innerText = ''
+		pc_historial.innerText = '' */
 
-		}
+/* 		}
 	else{
 		alert("no tienes edad suficiente para solicitar un credito!!")
-		alert("Te haremos unas preguntas que te ayudaran a sumar puntos para calificar de todas maneras para el credito")
-		for (let i=1 ;i<=3;i++){
+		alert("Te haremos unas preguntas que te ayudaran a sumar puntos para calificar de todas maneras para el credito") */
+/* 		for (let i=1 ;i<=3;i++){
 			switch (i){
 				case 1:
 					let trabajo=0
@@ -341,7 +322,7 @@ calcular.onclick = () => {
 		else{
 			alert("lo sentimos, aunque tienes puntos extras no es suficiente, no podemos darte el credito")
 		}
-	}
+	} */
 } 
 	
 

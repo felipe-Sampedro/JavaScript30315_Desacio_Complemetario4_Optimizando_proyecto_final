@@ -30,26 +30,36 @@
   </div>
 
   <div class="condiciones bg-light p-4 align-center">
-
-    <h4>MONTO DEL CREDITO</h4>
-
-      <label for="prestamo">Selecciona el monto total del credito (valores entre 1'000.000 y 150'000.000): </label>
-      <input type="range" name="prestamo" id="prestamo" min="50000000" max="150000000" step="1000000" value="120000000">
-      <output class="prestamo-output" for="prestamo"></output>
-
+    
+    <div class="monto py-4">
+      
+      <h4>MONTO DEL CREDITO</h4>
   
-    <h4>TASA INTERES E.A (Efectivo Anual):</h4>
+        <label for="prestamo">Selecciona el monto total del credito (valores entre 1'000.000 y 150'000.000): </label>
+        <input type="range" name="prestamo" id="prestamo" min="50000000" max="150000000" step="1000000" value="120000000">
+        <output class="prestamo-output" for="prestamo"></output>
 
-    <label for="interes">Seleccion la tasa de interes entre 5% E.A y el 23% E.A (Topes permitidos por el gobierno): </label>
-    <input type="range" name="interes" id="interes" min="6" max="15" step="0.01" value="8.73">
-    <output class="interes-output" for="interes"></output>
+    </div>
 
 
-    <h4>PLAZO TOTAL CREDITO:</h4>
+    <div class="tasa py-4">
+      
+      <h4>TASA INTERES E.A (Efectivo Anual):</h4>
+  
+      <label for="interes">Seleccion la tasa de interes entre 5% E.A y el 23% E.A (Topes permitidos por el gobierno): </label>
+      <input type="range" name="interes" id="interes" min="6" max="15" step="0.01" value="8.73">
+      <output class="interes-output" for="interes"></output>
+    </div>  
 
-    <label for="plazo">Selecciona el numero de años en que deseas pagar el credito (minimo 1 maximo 20): </label>
-    <input type="range" name="plazo" id="plazo" min="1" max="15" step="1" value="10">
-    <output class="plazo-output" for="plazo"></output>
+
+    <div class="plazo py-4">
+      <h4>PLAZO TOTAL CREDITO:</h4>
+  
+      <label for="plazo">Selecciona el numero de años en que deseas pagar el credito (minimo 1 maximo 20): </label>
+      <input type="range" name="plazo" id="plazo" min="1" max="15" step="1" value="10">
+      <output class="plazo-output" for="plazo"></output>
+
+    </div>
 
   </div>
 
@@ -58,7 +68,7 @@
 
     <h3>EL VALOR DE LA CUOTA MENSUAL A PAGAR ES:</h3>
     <div class="cuota " id="padre_r_final">
-      <p class="resultado" id="resultado_final"></p>
+      <p class="resultado text-center align-middle" id="resultado_final"></p>
     </div>
 <!--     <div class="storage">
       <h4>PERFIL CLIENTE</h4>
