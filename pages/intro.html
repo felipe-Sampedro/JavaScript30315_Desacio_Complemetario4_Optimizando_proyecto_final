@@ -74,12 +74,12 @@
         <h2 class="text-center">DATOS PERSONALES</h2>
 
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Nombre y Apellido</label>
+          <label for="exampleFormControlInput1" class="form-label">* Nombre y Apellido</label>
           <input id="nom_ape" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Felipe Sampedro">
         </div>
 
         <select id="edad" class="form-select mb-3" aria-label="Default select example">
-            <option selected>Selecciona tu Edad</option>
+            <option selected>* Selecciona tu Edad</option>
             <option value="12">12</option>
             <option value="13">13</option>
             <option value="14">14</option>
@@ -178,13 +178,15 @@
             </div>
         </div>
 
-        <div id="alerta" class="bg-danger my-3">
+        <div id="alerta" class="my-3 p-1">
             <p></p>
         </div>
 
+        <div id="comando">
+            <button id="simular" type="button" class="btn btn-outline-primary btn-lg">VALIDAR INFORMACION</button>
+            <input class="btn btn-outline-primary btn-lg" type="reset">
+        </div>
 
-        <button id="simular" type="button" class="btn btn-outline-primary btn-lg">SIMULAR CREDITO</button>
-        <input class="btn btn-info btn-lg" type="reset">
     </form>
         
 </main>
