@@ -1,14 +1,11 @@
 
 console.log('PRESTAMOS')
-/* alert("MUEVE LOS PARAMETROS Monto del Credito, Tasa Interes y Plazo PARA CALCULAR TU CUOTA MENSUAL A PAGAR!!! \n RECUERDA QUE DEBES SER MASYOR DE EDAD PARA SOLICITAR UN CREDITO") */
 
-sessionStorage.setItem('fecha',new Date())
 let tasa_interes_EM=0
 let periodo=0
 
 
 // funciones operaciones basicas
-
 function sumar(...numeros){
 	return numeros.reduce((acc,n) => acc + n ,0)
 }
@@ -144,13 +141,6 @@ limpiar.onclick = () => {amortizacion.innerText="";
 	for (const e of remover){
 		e.remove()
 	}
-
-	pc_fecha.innerText="FECHA"
-	años.innerText="EDAD"
-	menor_edad.innerText="MENOR DE EDAD"
-	pc_trabaja.innerText ="¿TRABAJA?"
-	pc_amparo.innerText="¿AMPARADO?"
-	pc_historial.innerText="¿TIENE HISTORIAL?"
 }
 
 
