@@ -8,16 +8,20 @@ simular.onclick = () =>{
 	const nombre = document.getElementById('nom_ape')
     const age = document.getElementById('edad')
     const ready = document.getElementById('comando')
+    const trabajando = (document.getElementById('flexRadioDefault1').checked)?'SI':'NO'
+    const tutor = (document.getElementById('flexRadioDefault3').checked)?'SI':'NO'
+    const trayectoria = (document.getElementById('flexRadioDefault5').checked)?'SI':'NO'
 	if (nombre.value==='' || age.value==='Selecciona tu Edad'){
 		alertaintro.innerText="¡Todos los datos con '*' son obligatorios para poder continuar!"
         alertaintro.className="bg-danger m-3"
     }
 	else{
-		const trabajando = (document.getElementById('flexRadioDefault1').checked)?'SI':'NO'
+/* 		const trabajando = (document.getElementById('flexRadioDefault1').checked)?'SI':'NO'
         const tutor = (document.getElementById('flexRadioDefault3').checked)?'SI':'NO'
-        const trayectoria = (document.getElementById('flexRadioDefault5').checked)?'SI':'NO'
+        const trayectoria = (document.getElementById('flexRadioDefault5').checked)?'SI':'NO' */
         if(parseInt(edad.value) > 18){
-            alertaintro.innerText=`Felicitaaciones, cumples con el requisito minimo para acceder al credito`
+            trabajando === 'SI' ? alertaintro.innerText=`Felicitaaciones, cumples con el requisito minimo para acceder al credito y ademas SI Tienes trabajo`
+                                :alertaintro.innerText=`Felicitaaciones, cumples con el requisito minimo para acceder al credito`
             alertaintro.className="bg-success m-3"
             let btn=document.createElement('button')
             btn.id='nuevobtn'

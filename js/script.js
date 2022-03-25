@@ -6,6 +6,13 @@ sessionStorage.setItem('fecha',new Date())
 let tasa_interes_EM=0
 let periodo=0
 
+
+// funciones operaciones basicas
+
+function sumar(...numeros){
+	return numeros.reduce((acc,n) => acc + n ,0)
+}
+
 // funciones para conversion de parametros
 function conversion_tasa_interes(tasa_interes_EA){
 	let tasa_interes_EM = Math.pow((1 + (tasa_interes_EA/100)),(1/12))-1
@@ -114,6 +121,7 @@ class Cada_Periodo {
 
 // Array vacio para utilizar propiedad push y cargarlos con los objetos creados de la funcion cosntructora
 const Plan_pagos=[]
+const tot_int_pagados=[]
 
 Plan_pagos.join('--')
 console.log(Plan_pagos)
@@ -162,7 +170,16 @@ function plan_amortizacion(){
 		Plan_pagos.push(nombre_objeto = new Cada_Periodo(a,numPK(a).toFixed(2),denPK(a).toFixed(2),PK(numPK(a),denPK(a)),numPK_1(a).toFixed(2),denPK_1(a).toFixed(2),PK_1(numPK_1(a),denPK_1(a)),0,0));			
 		nombre_objeto.abono_capital()			
 		nombre_objeto.pago_intereses()
-//		console.log(`en el mes ${a} se pagaron ${nombre_objeto.abonos} pesos como abono a capital y ${nombre_objeto.cobro} pesos en abono a intereses`)
+
+		tot_int_pagados.push(nombre_objeto.cobro)
+		//optimizando variables + operador logico OR 
+		console.log(nombre_objeto?.cobro || 'La propiedad Cobro no existe')
+		console.log(nombre_objeto?.refinanciacion || 'La propiedad refinanciacion no existe')	
+		
+		//desestructurar objeto
+		const {capitalPK,capitalPK_1,abonos,cobro} = nombre_objeto
+		console.log(`Las variables desestructuradas son: Capital Anterior = ${capitalPK_1}, Capital Actual = ${capitalPK}, Abonos = ${abonos} e Intereses = ${cobro}`)
+
 		let container = document.getElementById('detalle_pagos')
 		let tr = document.createElement('tr')
 		tr.className= `${a} fila` 
@@ -208,124 +225,13 @@ function plan_amortizacion(){
 
 const calcular = document.getElementById('calculo')
 calcular.onclick = () => {
-/* 	edad=parseInt(prompt("cual es tu edad?"))
-	while (isNaN(edad) || edad<=0){
-		alert("La edad ingresada debe ser mayor que cero")
-		edad=parseInt(prompt("cual es tu edad?"))
-	} */
-/* 	sessionStorage.setItem('edad',edad) */
-/* 	if (edad>=18){ */
 		anualidad()
 		plan_amortizacion()
 		sessionStorage.setItem('programa', JSON.stringify(Plan_pagos))
-/* 		const programaJson=sessionStorage.getItem('programa')
-		console.log(programaJson)
-		let pc_fecha=document.getElementById('storage_fecha')
-		pc_fecha.innerText = 'FECHA: '+ sessionStorage.getItem('fecha')
-
-		let años=document.getElementById('edad')
-		años.innerText = 'EDAD: '+ sessionStorage.getItem('edad')
-
-		let menor_edad=document.getElementById('menor_edad')
-		menor_edad.innerText = 'MENOR DE EDAD: NO!'
-
-		let pc_trabaja=document.getElementById('trabaja')
-		pc_trabaja.innerText = ''
-
-		let pc_amparo=document.getElementById('amparado')
-		pc_amparo.innerText = ''
-
-		let pc_historial=document.getElementById('historial')
-		pc_historial.innerText = '' */
-
-/* 		}
-	else{
-		alert("no tienes edad suficiente para solicitar un credito!!")
-		alert("Te haremos unas preguntas que te ayudaran a sumar puntos para calificar de todas maneras para el credito") */
-/* 		for (let i=1 ;i<=3;i++){
-			switch (i){
-				case 1:
-					let trabajo=0
-					while (trabajo !== "SI" && trabajo !== "si" && trabajo !== "Si" &&  trabajo !== "sI" && trabajo !== "NO" && trabajo !== "no" && trabajo !== "No" && trabajo !== "nO"){
-						trabajo = prompt("¿Actualmente trabajas y puedes demotrar ingresos? SI o NO")
-						if(trabajo !== "SI" && trabajo !== "si" && trabajo !== "Si" &&  trabajo !== "sI" && trabajo !== "NO" && trabajo !== "no" && trabajo !== "No" && trabajo !== "nO"){
-							alert("Solo puedes responder SI o NO")
-						}
-						console.log(trabajo)
-					}	
-					if (trabajo == "SI" || trabajo == "si" || trabajo == "Si" ||  trabajo == "sI"){
-						edad = edad+3
-						console.log(edad)
-						console.log(trabajo)
-					}
-					sessionStorage.setItem('trabajas', trabajo)
-					break
-				case 2:
-					let amparo=0
-					while(amparo !== "SI" && amparo !== "si" && amparo !== "Si" &&  amparo !== "sI" && amparo !== "NO" && amparo !== "no" && amparo !== "No" && amparo !== "nO"){
-						amparo = prompt("Tienes alguien que te ampare financieramente? SI o NO")
-						if(amparo !== "SI" && amparo !== "si" && amparo !== "Si" &&  amparo !== "sI" && amparo !== "NO" && amparo !== "no" && amparo !== "No" && amparo !== "nO"){
-							alert("Solo puedes responder SI o NO")
-						}
-						console.log(amparo)
-					}
-					if (amparo == "SI" || amparo == "si" || amparo == "Si" ||  amparo == "sI"){
-						edad = edad+2
-						console.log(edad)
-						console.log(amparo)
-					}
-					sessionStorage.setItem('amparado', amparo)
-					break
-				case 3:
-					let historial=0
-					while(historial !== "SI" && historial !== "si" && historial !== "Si" &&  historial !== "sI" && historial !== "NO" && historial !== "no" && historial !== "No" && historial !== "nO"){
-						historial=prompt("Tienes hitorial crediticio? SI o NO")
-						if(historial !== "SI" && historial !== "si" && historial !== "Si" &&  historial !== "sI" && historial !== "NO" && historial !== "no" && historial !== "No" && historial !== "nO"){
-							alert("Solo puedes responder SI o NO")
-						}
-						console.log(historial)
-					}
-					if (historial == "SI" || historial == "si" || historial == "Si" ||  historial == "sI"){
-						edad = edad+1
-						console.log(edad)
-						console.log(historial)
-					}
-					sessionStorage.setItem('historial', historial)
-					break
-				}
-			if(edad>=18){
-				i=4
-			}
-		}
-		if(edad>=18){
-			anualidad()
-			plan_amortizacion()	
-
-			let pc_fecha=document.getElementById('storage_fecha')
-			pc_fecha.innerText = 'FECHA: '+ sessionStorage.getItem('fecha')
-	
-			let años=document.getElementById('edad')
-			años.innerText = 'EDAD: '+ sessionStorage.getItem('edad')
-	
-			let menor_edad=document.getElementById('menor_edad')
-			menor_edad.innerText = 'MENOR DE EDAD: SI!'
-	
-			let pc_trabaja=document.getElementById('trabaja')
-			pc_trabaja.innerText = '¿TRABAJA?: '+ sessionStorage.getItem('trabajas')
-	
-			let pc_amparo=document.getElementById('amparado')
-			pc_amparo.innerText = '¿AMPARADO?: ' + sessionStorage.getItem('amparado')
-	
-			let pc_historial=document.getElementById('historial')
-			pc_historial.innerText = '¿HISTORIAL?: ' + sessionStorage.getItem('historial')
-		}
-		else{
-			alert("lo sentimos, aunque tienes puntos extras no es suficiente, no podemos darte el credito")
-		}
-	} */
+		// Spread del array tot_int_pagados para sumarlos y poder calcular el total de intereses a pagar
+		console.log(`El total de intereses pagados segun las condiciones seleccionadas es de ` + formatter.format(sumar(...tot_int_pagados)))
 } 
 	
-
 // para mostrar el valor seleccionados en los inputs de rango
 const prestamo = document.querySelector('#prestamo')
 const output = document.querySelector('.prestamo-output')
@@ -336,7 +242,6 @@ prestamo.addEventListener('input', function() {
   output.textContent = prestamo.value
 });
 
-
 const interes = document.querySelector('#interes')
 const output2 = document.querySelector('.interes-output')
 
@@ -345,7 +250,6 @@ output2.textContent = interes.value
 interes.addEventListener('input', function() {
   output2.textContent = interes.value
 });
-
 
 const plazo = document.querySelector('#plazo')
 const output3 = document.querySelector('.plazo-output')
