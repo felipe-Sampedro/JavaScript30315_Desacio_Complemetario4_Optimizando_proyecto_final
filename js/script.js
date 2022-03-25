@@ -123,6 +123,7 @@ const tot_int_pagados=[]
 Plan_pagos.join('--')
 console.log(Plan_pagos)
 
+const limpeza = document.getElementsByTagName('tr')
 const borrar = document.getElementsByTagName('td')
 const remover = document.getElementsByClassName('fila')
 const amortizacion = document.querySelector('.resultado')
@@ -141,6 +142,9 @@ limpiar.onclick = () => {amortizacion.innerText="";
 	for (const e of remover){
 		e.remove()
 	}
+/* 	for (const l of limpeza){
+		l.remove()
+	} */
 }
 
 
