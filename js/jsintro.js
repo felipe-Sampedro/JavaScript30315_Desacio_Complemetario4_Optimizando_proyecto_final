@@ -24,13 +24,10 @@ if (validacion1!==null && validacion2!==null){
     const trayectoriaNO =document.getElementById('flexRadioDefault6')
     validacion5 === 'SI'? trayectoriaSI.checked=true:trabajandoNO.checked=true
 
-
     alertaintro.innerText="La session ha sido restaurada con los datos anteriormente ingresados"
     alertaintro.className="bg-dark text-white m-3"
 
 }
-
-
 
 const simular = document.getElementById('simular')
 simular.onclick = () =>{
